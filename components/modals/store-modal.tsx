@@ -18,6 +18,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
     name: z.string().min(1),
@@ -43,8 +44,9 @@ const StoreModal = () => {
             const response = await axios.post("/api/stores", values);
             // window.location.assign(`/${response.data.id}`);
             console.log(response.data);
+            toast.success("Berhasil membuat toko");
         } catch (error) {
-            console.log(error);
+            toast.error("Gagal membuat toko");
         } finally {
             setLoading(false);
         }
