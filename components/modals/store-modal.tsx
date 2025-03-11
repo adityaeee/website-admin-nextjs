@@ -7,6 +7,10 @@ import Modal from "../ui/modal";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import axios from "axios";
+import toast from "react-hot-toast";
 import {
     Form,
     FormControl,
@@ -15,10 +19,6 @@ import {
     FormLabel,
     FormMessage,
 } from "../ui/form";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import axios from "axios";
-import toast from "react-hot-toast";
 
 const formSchema = z.object({
     name: z.string().min(1),
