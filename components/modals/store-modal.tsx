@@ -11,14 +11,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import axios from "axios";
 import toast from "react-hot-toast";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "../ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 
 const formSchema = z.object({
     name: z.string().min(1),
@@ -45,6 +38,7 @@ const StoreModal = () => {
             // window.location.assign(`/${response.data.id}`);
             console.log(response.data);
             toast.success("Berhasil membuat toko");
+            window.location.assign(`/${response.data.id}`);
         } catch (error) {
             toast.error("Gagal membuat toko");
         } finally {
@@ -58,8 +52,7 @@ const StoreModal = () => {
                 title="Membuat Toko Baru"
                 description="Tambahkan toko untuk membuat produk dan kategori"
                 isOpen={storeModal.isOpen}
-                onClose={storeModal.onClose}
-            >
+                onClose={storeModal.onClose}>
                 <div>
                     <div className="space-y-4 py-2 pb-4">
                         <Form {...form}>
@@ -85,11 +78,12 @@ const StoreModal = () => {
                                     <Button
                                         variant="outline"
                                         onClick={storeModal.onClose}
-                                        disabled={loading}
-                                    >
+                                        disabled={loading}>
                                         Cancel
                                     </Button>
-                                    <Button type="submit" disabled={loading}>
+                                    <Button
+                                        type="submit"
+                                        disabled={loading}>
                                         Continue
                                     </Button>
                                 </div>

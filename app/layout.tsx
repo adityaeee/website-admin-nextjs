@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import {
-    ClerkProvider,
-    SignInButton,
-    SignedIn,
-    SignedOut,
-    UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 import "./globals.css";
 import ModalProvider from "@/providers/modal-provider";
@@ -31,9 +25,7 @@ export default function RootLayout({
                     <SignedOut>
                         <SignInButton />
                     </SignedOut>
-                    <SignedIn>
-                        <UserButton />
-                    </SignedIn>
+                    <SignedIn />
                     <ToasterProvider />
                     <ModalProvider />
                     {children}
