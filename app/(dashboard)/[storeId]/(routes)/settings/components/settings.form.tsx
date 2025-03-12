@@ -22,6 +22,7 @@ import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
+import { AlertModal } from "@/components/modals/alert-modal";
 
 interface SettingsFormProps {
     initialData: Store;
@@ -58,8 +59,29 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
         }
     };
 
+    const onDelete = async () => {
+        try {
+            setLoading(true);
+            await axios.delete(`/api/stores/${params.storeId}`);
+            router.refresh();
+            router.push("/");
+            toast.success("Toko berhasil dihapus");
+        } catch (error) {
+            toast.error("Cek kembali data dan koneksinya");
+        } finally {
+            setLoading(false);
+            setOpen(false);
+        }
+    };
+
     return (
         <>
+            <AlertModal
+                isOpen={open}
+                onClose={() => setOpen(false)}
+                onConfirm={onDelete}
+                loading={loading}
+            />
             <div className="flex item-center justify-between">
                 <Heading
                     title="Settings"
