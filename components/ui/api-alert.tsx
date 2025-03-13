@@ -35,7 +35,7 @@ export const ApiAlert: React.FC<ApiAlertProps> = ({ title, description, variant 
                 <AlertTitle>
                     {title}
                     <Badge
-                        className="mx-3"
+                        className="mx-2"
                         variant={variantMap[variant]}>
                         {textMap[variant]}
                     </Badge>
