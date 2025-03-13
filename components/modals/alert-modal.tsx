@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Modal from "../ui/modal";
 import { Button } from "../ui/button";
-import LoadingSpinner from "../loading-spinner";
+import LoadingSpinner from "../loading-animation";
 
 interface AlertModalProps {
     isOpen: boolean;
