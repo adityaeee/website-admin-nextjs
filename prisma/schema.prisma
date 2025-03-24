@@ -4,7 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-//TODO npx prisma generate --for generate database first time, every new model 
+//TODO npx prisma generate --for generate database first time, and every new model 
 //TODO npx prisma db push --for push schema to prisma after generate
 //TODO npx prisma migrate reset --for reset database
 
@@ -21,7 +21,7 @@ model Store {
   id          String      @id @default(uuid())
   name        String
   userId      String
-  banner      Banner[] @relation("StoreToBanner")
+  banner      Banner[]    @relation("StoreToBanner")
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 }
@@ -29,7 +29,7 @@ model Store {
 model Banner {
   id          String      @id @default(uuid())
   storeId     String
-  store       Store @relation("StoreToBanner", fields: [storeId], references: [id])
+  store       Store       @relation("StoreToBanner", fields: [storeId], references: [id])
   label       String
   imageUrl    String
   createdAt   DateTime    @default(now())

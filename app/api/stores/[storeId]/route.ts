@@ -27,7 +27,7 @@ export async function PATCH(req: Request, { params }: { params: { storeId: strin
 
         return NextResponse.json(store);
     } catch (error) {
-        console.log(`[STOTER_PATCH]`, error);
+        console.log(`[STORE_PATCH]`, error);
         return new NextResponse("Internal Server Error", { status: 500 });
     }
 }
@@ -50,7 +50,7 @@ export async function DELETE(req: Request, { params }: { params: { storeId: stri
 
         return NextResponse.json(store);
     } catch (error) {
-        console.log(`[STOTER_DELETE]`, error);
+        console.log(`[STORE_DELETE]`, error);
         return new NextResponse("Internal Server Error", { status: 500 });
     }
 }
